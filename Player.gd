@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 # Declare member variables here. Examples:
 var screen_size
@@ -28,7 +28,7 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	rotation += rotation_dir * rotation_speed * delta
-
+	velocity += move_and_slide(velocity)
 
 
 
