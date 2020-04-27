@@ -1,23 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprite/BasilTest.png" type="Texture" id=1]
-
-[sub_resource type="GDScript" id=5]
-script/source = "extends Area2D
-
-# Declare member variables here. Examples:
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
+[ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -31,46 +15,16 @@ animations = [ {
 radius = 7.69857
 height = 42.1912
 
-[sub_resource type="VisualScriptFunction" id=3]
-resource_name = "process"
-argument_count = 1
-argument_1/type = 3
-argument_1/name = "delta"
-
-[sub_resource type="VisualScript" id=4]
-data = {
-"base_type": "CollisionShape2D",
-"functions": [ {
-"data_connections": [  ],
-"function_id": -1,
-"name": "f_312843592",
-"nodes": [  ],
-"scroll": Vector2( -1112, -786.75 ),
-"sequence_connections": [  ]
-}, {
-"data_connections": [  ],
-"function_id": 0,
-"name": "process",
-"nodes": [ 0, Vector2( -760, -620 ), SubResource( 3 ) ],
-"scroll": Vector2( -50, -100 ),
-"sequence_connections": [  ]
-} ],
-"is_tool_script": false,
-"signals": [  ],
-"variables": [  ],
-"vs_unify": true
-}
-
 [node name="Area2D" type="Area2D"]
-script = SubResource( 5 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+position = Vector2( 666.912, 491.855 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.373009, -1.17235 )
 shape = SubResource( 2 )
-script = SubResource( 4 )
