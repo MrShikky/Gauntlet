@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
 # Declare member variables here. Examples:
-var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
+	pass
 
-export (int) var speed = 200
-export (float) var rotation_speed = 1.5
+export (int) var speed = 600
+export (float) var radius = 200
+export (float) var rotation_speed = speed / radius
 
 var velocity = Vector2()
 var rotation_dir = 0
@@ -16,19 +16,18 @@ var rotation_dir = 0
 func get_input():
 	rotation_dir = 0
 	velocity = Vector2()
-	if Input.is_action_pressed('right'):
-		rotation_dir += 1
-	if Input.is_action_pressed('left'):
-		rotation_dir -= 1
-	if Input.is_action_pressed('down'):
+	if Input.is_action_pressed("ui_left"):
 		velocity = Vector2(-speed, 0).rotated(rotation)
-	if Input.is_action_pressed('up'):
+		rotation_dir += 1
+	if Input.is_action_pressed("ui_right"):
 		velocity = Vector2(speed, 0).rotated(rotation)
+		rotation_dir -= 1
 
-func _physics_process(delta):
+func _process(delta):
 	get_input()
 	rotation += rotation_dir * rotation_speed * delta
 	velocity += move_and_slide(velocity)
+	
 
 
 
